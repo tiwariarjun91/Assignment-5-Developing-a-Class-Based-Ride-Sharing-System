@@ -18,7 +18,22 @@ public:
     }
     virtual ~Ride() = default;
     const std::string& getRideID() const { return rideID_; }
+    const std::string& getPickupLocation() const { return pickupLocation_; }
+    const std::string& getDropoffLocation() const { return dropoffLocation_; }
     double getDistance() const { return distanceMiles_; }
+
+    void setPickupLocation(const std::string& location) {
+        pickupLocation_ = location;
+    }
+
+    void setDropoffLocation(const std::string& location) {
+        dropoffLocation_ = location;
+    }
+
+    void setDistance(double miles) {
+        if (miles <= 0) throw std::invalid_argument("Distance must be positive");
+        distanceMiles_ = miles;
+    }
     virtual std::string getType() const = 0;
     virtual double fare() const = 0;
     virtual void rideDetails() const {
