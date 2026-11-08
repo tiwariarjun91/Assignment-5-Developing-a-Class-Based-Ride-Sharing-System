@@ -12,7 +12,22 @@ Object subclass: Ride [
         ^self
     ]
     rideID [ ^rideID ]
+    pickupLocation [ ^pickupLocation ]
+    dropoffLocation [ ^dropoffLocation ]
     distance [ ^distance ]
+
+    pickupLocation: aLocation [
+        pickupLocation := aLocation
+    ]
+
+    dropoffLocation: aLocation [
+        dropoffLocation := aLocation
+    ]
+
+    distance: miles [
+        miles <= 0 ifTrue: [self error: 'Distance must be positive'].
+        distance := miles
+    ]
     rideType [ self subclassResponsibility ]
     fare [ self subclassResponsibility ]
     rideDetails [
